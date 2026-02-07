@@ -30,3 +30,10 @@
 | service ID | INT                               | NOT NULL, FOREIGN KEY       | Odkaz do entity services | 
 | date       | DATE                              | NOT NULL                    | Datum nasazení serveru   | 
 | status     | ENUM('production', 'development') | NOT NULL, CHECK             | Stav serveru             | 
+
+## Otázky k zamyšlení:
+
+1. Co jsou datové typy a jaký mají význam z hlediska uchovávání dat v DB? 
+    - Datový typ upřesňuje jak budou data uložena a kolik místa v paměti zaberou. 
+2. Co jsou integritní omezení? 
+    - To jsou pravidla, která kotrolují správnost dat a jejich logickou provázanost
