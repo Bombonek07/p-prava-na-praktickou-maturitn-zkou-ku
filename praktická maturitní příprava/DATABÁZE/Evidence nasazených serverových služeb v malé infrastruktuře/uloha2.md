@@ -14,6 +14,8 @@
     - services (nepoviná)
     - deployment (poviná)
 
+### Diagram
+
     [ SERVERS ]                 [ DEPLOYMENT ]                [ SERVICES ]
     +-------------+             +----------------+             +--------------+
     | ID (PK)     |             | ID (PK)        |             | ID (PK)      |
