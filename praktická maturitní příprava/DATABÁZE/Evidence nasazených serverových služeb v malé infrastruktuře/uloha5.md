@@ -1,2 +1,0 @@
-# EER diagram (Markdown)
-
