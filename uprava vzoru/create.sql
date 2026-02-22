@@ -40,6 +40,8 @@ CREATE TABLE services_running_on_servers (
     IPv6 VARCHAR(39) NULL,
     port INT NULL,
     protocol VARCHAR(20) NULL,
+    status ENUM('Installed', 'Started', 'Running', 'Stopped', 'Failed') NOT NULL,
+    check_date DATE NOT NULL,
 
     -- složený primární klíč
     PRIMARY KEY (servers_id, services_id),
