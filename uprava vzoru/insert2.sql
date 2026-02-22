@@ -30,65 +30,65 @@ INSERT INTO services (name, s_type, s_ver) VALUES
 -- =====================================
 
 INSERT INTO services_running_on_servers
-(servers_id, services_id, domain, IPv4, IPv6, port, protocol)
+(servers_id, services_id, domain, IPv4, IPv6, port, protocol, status, check_date)
 VALUES
 
 -- WEB SERVER 01
 (
  (SELECT id FROM servers WHERE name='srv-web-01'),
  (SELECT id FROM services WHERE name='Nginx'),
- 'www.company.local', '10.0.10.11', NULL, 80, 'HTTP'
+ 'www.company.local', '10.0.10.11', NULL, 80, 'HTTP', 'Running', '2024-05-23'
 ),
 (
  (SELECT id FROM servers WHERE name='srv-web-01'),
  (SELECT id FROM services WHERE name='Node.js API'),
- 'api.company.local', '10.0.10.11', NULL, 3000, 'HTTP'
+ 'api.company.local', '10.0.10.11', NULL, 3000, 'HTTP', 'Stopped', '2024-05-23'
 ),
 (
  (SELECT id FROM servers WHERE name='srv-web-01'),
  (SELECT id FROM services WHERE name='Docker'),
- NULL, '10.0.10.11', NULL, NULL, NULL
+ NULL, '10.0.10.11', NULL, NULL, NULL, 'Installed', '2024-05-23'
 ),
 
 -- WEB SERVER 02
 (
  (SELECT id FROM servers WHERE name='srv-web-02'),
  (SELECT id FROM services WHERE name='Nginx'),
- 'shop.company.local', '10.0.10.12', NULL, 443, 'HTTPS'
+ 'shop.company.local', '10.0.10.12', NULL, 443, 'HTTPS', 'Running', '2024-05-23'
 ),
 (
  (SELECT id FROM servers WHERE name='srv-web-02'),
  (SELECT id FROM services WHERE name='Docker'),
- NULL, '10.0.10.12', NULL, NULL, NULL
+ NULL, '10.0.10.12', NULL, NULL, NULL,  'Stopped', '2024-05-23'
 ),
 
 -- DB SERVER
 (
  (SELECT id FROM servers WHERE name='srv-db-01'),
  (SELECT id FROM services WHERE name='MariaDB'),
- NULL, '10.0.20.10', NULL, 3306, 'TCP'
+ NULL, '10.0.20.10', NULL, 3306, 'TCP', 'Failed', '2024-05-23'
 ),
 (
  (SELECT id FROM servers WHERE name='srv-db-01'),
  (SELECT id FROM services WHERE name='Prometheus'),
- NULL, '10.0.20.10', NULL, 9090, 'HTTP'
+ NULL, '10.0.20.10', NULL, 9090, 'HTTP', 'Running', '2024-05-23'
 ),
 
 -- MAIL SERVER
 (
  (SELECT id FROM servers WHERE name='srv-mail-01'),
  (SELECT id FROM services WHERE name='Postfix'),
- 'mail.company.local', '10.0.30.5', NULL, 25, 'SMTP'
+ 'mail.company.local', '10.0.30.5', NULL, 25, 'SMTP', 'Running', '2024-05-23'
 ),
 
 -- DEV SERVER
 (
  (SELECT id FROM servers WHERE name='srv-dev-01'),
  (SELECT id FROM services WHERE name='Docker'),
- NULL, '10.0.40.15', NULL, NULL, NULL
+ NULL, '10.0.40.15', NULL, NULL, NULL, 'Running', '2024-05-23'
 ),
 (
  (SELECT id FROM servers WHERE name='srv-dev-01'),
  (SELECT id FROM services WHERE name='Node.js API'),
- 'dev-api.company.local', '10.0.40.15', NULL, 3001, 'HTTP'
+ 'dev-api.company.local', '10.0.40.15', NULL, 3001, 'HTTP', 'Running', '2024-05-23'
 );

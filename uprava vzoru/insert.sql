@@ -45,24 +45,24 @@ SET @svc_prometheus = (SELECT id FROM services WHERE name='Prometheus');
 -- =====================================
 
 INSERT INTO services_running_on_servers
-(servers_id, services_id, domain, IPv4, IPv6, port, protocol)
+(servers_id, services_id, domain, IPv4, IPv6, port, protocol, status, check_date)
 VALUES
 -- WEB SERVER 01
-(@srv_web_01, @svc_nginx, 'www.company.local', '10.0.10.11', NULL, 80,  'HTTP'),
-(@srv_web_01, @svc_node,  'api.company.local', '10.0.10.11', NULL, 3000,'HTTP'),
-(@srv_web_01, @svc_docker, NULL,               '10.0.10.11', NULL, NULL,NULL),
+(@srv_web_01, @svc_nginx, 'www.company.local', '10.0.10.11', NULL, 80,  'HTTP', 'Running', '2024-05-23'),
+(@srv_web_01, @svc_node,  'api.company.local', '10.0.10.11', NULL, 3000,'HTTP', 'Stopped', '2024-05-23'),
+(@srv_web_01, @svc_docker, NULL,               '10.0.10.11', NULL, NULL,NULL, 'Installed', '2024-05-23'),
 
 -- WEB SERVER 02
-(@srv_web_02, @svc_nginx, 'shop.company.local','10.0.10.12', NULL, 443, 'HTTPS'),
-(@srv_web_02, @svc_docker,NULL,                '10.0.10.12', NULL, NULL,NULL),
+(@srv_web_02, @svc_nginx, 'shop.company.local','10.0.10.12', NULL, 443, 'HTTPS', 'Running', '2024-05-23'),
+(@srv_web_02, @svc_docker,NULL,                '10.0.10.12', NULL, NULL,NULL, 'Stopped', '2024-05-23'),
 
 -- DB SERVER
-(@srv_db_01, @svc_mariadb, NULL, '10.0.20.10', NULL, 3306, 'TCP'),
-(@srv_db_01, @svc_prometheus, NULL, '10.0.20.10', NULL, 9090, 'HTTP'),
+(@srv_db_01, @svc_mariadb, NULL, '10.0.20.10', NULL, 3306, 'TCP', 'Failed', '2024-05-23'),
+(@srv_db_01, @svc_prometheus, NULL, '10.0.20.10', NULL, 9090, 'HTTP', 'Running', '2024-05-23'),
 
 -- MAIL SERVER
-(@srv_mail_01, @svc_postfix, 'mail.company.local', '10.0.30.5', NULL, 25, 'SMTP'),
+(@srv_mail_01, @svc_postfix, 'mail.company.local', '10.0.30.5', NULL, 25, 'SMTP', 'Running', '2024-05-23'),
 
 -- DEV SERVER
-(@srv_dev_01, @svc_docker, NULL, '10.0.40.15', NULL, NULL, NULL),
-(@srv_dev_01, @svc_node,   'dev-api.company.local', '10.0.40.15', NULL, 3001, 'HTTP');
+(@srv_dev_01, @svc_docker, NULL, '10.0.40.15', NULL, NULL, NULL, 'Running', '2024-05-23'),
+(@srv_dev_01, @svc_node,   'dev-api.company.local', '10.0.40.15', NULL, 3001, 'HTTP', 'Running', '2024-05-23');
